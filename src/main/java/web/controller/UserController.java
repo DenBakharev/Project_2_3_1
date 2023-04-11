@@ -22,10 +22,11 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String addNewUser(Model model) {
+    public String addNewUserForm(Model model) {
         model.addAttribute("user", new User());
         return "new";
     }
+
 
     @PostMapping
     public String createUser(@ModelAttribute("user") User user) {
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String getUserById(@PathVariable("id") long id, Model model) {
+    public String editUserForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "edit";
     }
